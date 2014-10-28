@@ -120,6 +120,7 @@
     <Compile Include="Helpers\IObjectLookupCache.cs" />
     <Compile Include="Helpers\ObjectLookupCache.cs" />
     <Compile Include="IAssemblyListProvider.cs" />
+    <Compile Include="IComponentBuilder.cs" />
     <Compile Include="IDbSessionManager.cs" />
     <Compile Include="IEventSubscriberAssembliesProvider.cs" />
     <Compile Include="IHttpContextWrapper.cs" />

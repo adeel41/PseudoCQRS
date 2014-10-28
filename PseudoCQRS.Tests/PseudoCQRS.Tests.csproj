@@ -113,6 +113,8 @@
     <Compile Include="CommandBusTests.cs" />
     <Compile Include="CommandHandlerFinderTests.cs" />
     <Compile Include="CommandHandlerProviderTests.cs" />
+    <Compile Include="Compoents\Examples\AskABidQuestionComponent.cs" />
+    <Compile Include="Compoents\Examples\BidWinnerComponent.cs" />
     <Compile Include="Configuration\DependencyInjectionContainerTests.cs" />
     <Compile Include="Configuration\DependencyInjectionServiceLocatorTests.cs" />
     <Compile Include="Configuration\DIConfigurationTests.cs" />
