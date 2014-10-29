@@ -113,8 +113,13 @@
     <Compile Include="CommandBusTests.cs" />
     <Compile Include="CommandHandlerFinderTests.cs" />
     <Compile Include="CommandHandlerProviderTests.cs" />
-    <Compile Include="Compoents\Examples\AskABidQuestionComponent.cs" />
-    <Compile Include="Compoents\Examples\BidWinnerComponent.cs" />
+    <Compile Include="Components\Examples\2AdminDeleteUserComponent.cs" />
+    <Compile Include="Components\Examples\1AdminListUsersComponent.cs" />
+    <Compile Include="Components\Examples\4AskABidQuestionComponent.cs" />
+    <Compile Include="Components\Examples\3BidWinnerComponent.cs" />
+    <Compile Include="Components\Examples\5AskABidQuestionComponent.cs" />
+    <Compile Include="Components\Examples\6EmailLinkAuthorizationComponent.cs" />
+    <Compile Include="Components\Examples\LoginComponent.cs" />
     <Compile Include="Configuration\DependencyInjectionContainerTests.cs" />
     <Compile Include="Configuration\DependencyInjectionServiceLocatorTests.cs" />
     <Compile Include="Configuration\DIConfigurationTests.cs" />
