@@ -1,5 +1,4 @@
 ﻿using System;
-using Microsoft.Practices.ServiceLocation;
 
 namespace PseudoCQRS.PropertyValueProviders
 {
@@ -8,12 +7,6 @@ namespace PseudoCQRS.PropertyValueProviders
 		private const string KeyFormat = "{0}:{1}";
 
 		private readonly IHttpContextWrapper _httpContextWrapper;
-
-		public SessionPropertyValueProvider()
-			:this(ServiceLocator.Current.GetInstance<IHttpContextWrapper>())
-		{
-
-		}
 
 		public SessionPropertyValueProvider( IHttpContextWrapper httpContextWrapper )
 		{

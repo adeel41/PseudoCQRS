@@ -5,6 +5,7 @@ namespace PseudoCQRS.Controllers
 {
 	public static class Mapper
 	{
+		[Obsolete]
 		public static TTo Map<TFrom, TTo>( TFrom viewModel )
 		{
 			IViewModelToCommandMappingEngine mappingEngine = null;

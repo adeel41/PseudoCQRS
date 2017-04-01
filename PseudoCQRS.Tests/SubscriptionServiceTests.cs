@@ -33,7 +33,7 @@ namespace PseudoCQRS.Tests
 
 			_cache = MockRepository.GenerateMock<IObjectLookupCache>();
 
-			_service = new SubscriptionService( _cache, _eventSubscriberAssembliesProvider );
+			_service = new SubscriptionService( _cache, _eventSubscriberAssembliesProvider, _mockedServiceLocator );
 		}
 
 		// EXPECT: Call _cache.GetValue

@@ -1,14 +1,10 @@
 ﻿using System;
-using Microsoft.Practices.ServiceLocation;
 
 namespace PseudoCQRS.PropertyValueProviders
 {
 	public class QueryStringPropertyValueProvider : BasePropertyValueProvider, IPropertyValueProvider
 	{
 		private readonly IHttpContextWrapper _httpContextWrapper;
-
-		public QueryStringPropertyValueProvider()
-			: this( ServiceLocator.Current.GetInstance<IHttpContextWrapper>() ) {}
 
 		public QueryStringPropertyValueProvider( IHttpContextWrapper httpContextWrapper )
 		{

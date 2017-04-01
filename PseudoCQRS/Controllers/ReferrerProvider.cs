@@ -7,10 +7,6 @@ namespace PseudoCQRS.Controllers
 	{
 		private readonly IHttpContextWrapper _httpContextWrapper;
 
-		[ExcludeFromCodeCoverage]
-		public ReferrerProvider()
-			: this( ServiceLocator.Current.GetInstance<IHttpContextWrapper>() ) {}
-
 		public ReferrerProvider( IHttpContextWrapper httpContextWrapper )
 		{
 			_httpContextWrapper = httpContextWrapper;

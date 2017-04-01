@@ -4,19 +4,30 @@ namespace PseudoCQRS.PropertyValueProviders
 {
 	public class PropertyValueProviderFactory : IPropertyValueProviderFactory
 	{
-		private readonly List<IPropertyValueProvider> _propertyValueProviders = new List<IPropertyValueProvider>()
-		{
-			new CookiePropertyValueProvider(),
-			new SessionPropertyValueProvider(),
-			new RouteDataPropertyValueProvider(),
-			new QueryStringPropertyValueProvider(),
-			new FormDataPropertyValueProvider()
-		};
+		private readonly List<IPropertyValueProvider> _propertyValueProviders;
+		private readonly CookiePropertyValueProvider _cookiePropertyValueProvider;
+		private readonly SessionPropertyValueProvider _sessionPropertyValueProvider;
 
-		public IEnumerable<IPropertyValueProvider> GetPropertyValueProviders()
+		public PropertyValueProviderFactory(
+			CookiePropertyValueProvider cookie,
+			SessionPropertyValueProvider session,
+			RouteDataPropertyValueProvider route,
+			QueryStringPropertyValueProvider queryString,
+			FormDataPropertyValueProvider formData )
 		{
-			return _propertyValueProviders;
+			_cookiePropertyValueProvider = cookie;
+			_sessionPropertyValueProvider = session;
+			_propertyValueProviders = new List<IPropertyValueProvider>
+			{
+				cookie,
+				session,
+				route,
+				queryString,
+				formData
+			};
 		}
+
+		public IEnumerable<IPropertyValueProvider> GetPropertyValueProviders() { return _propertyValueProviders; }
 
 		public IPersistablePropertyValueProvider GetPersistablePropertyValueProvider( PersistanceLocation location )
 		{
@@ -24,10 +35,10 @@ namespace PseudoCQRS.PropertyValueProviders
 			switch ( location )
 			{
 				case PersistanceLocation.Cookie:
-					result = new CookiePropertyValueProvider();
+					result = _cookiePropertyValueProvider;
 					break;
 				case PersistanceLocation.Session:
-					result = new SessionPropertyValueProvider();
+					result = _sessionPropertyValueProvider;
 					break;
 			}
 

@@ -90,7 +90,7 @@ namespace PseudoCQRS.Tests.Checkers
 				.Return( new TestAccessChecker3() );
 
 			ServiceLocator.SetLocatorProvider( () => mockedServiceLocator );
-			_finder = new CheckersFinder();
+			_finder = new CheckersFinder( mockedServiceLocator );
 		}
 
 		[Test]

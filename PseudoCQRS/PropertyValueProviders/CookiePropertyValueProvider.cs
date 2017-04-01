@@ -9,12 +9,6 @@ namespace PseudoCQRS.PropertyValueProviders
 	{
 		private readonly IHttpContextWrapper _httpContextWrapper;
 
-		public CookiePropertyValueProvider()
-			: this( ServiceLocator.Current.GetInstance<IHttpContextWrapper>() )
-		{
-			
-		}
-
 		public CookiePropertyValueProvider( IHttpContextWrapper httpContextWrapper )
 		{
 			_httpContextWrapper = httpContextWrapper;

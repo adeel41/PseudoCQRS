@@ -11,13 +11,16 @@ namespace PseudoCQRS
 	{
 		private readonly IObjectLookupCache _cache;
 		private readonly IEventSubscriberAssembliesProvider _eventSubscriberAssembliesProvider;
+		private readonly IServiceLocator _serviceLocator;
 
 		public SubscriptionService(
 			IObjectLookupCache cache,
-			IEventSubscriberAssembliesProvider eventSubscriberAssembliesProvider )
+			IEventSubscriberAssembliesProvider eventSubscriberAssembliesProvider,
+			IServiceLocator serviceLocator )
 		{
 			_cache = cache;
 			_eventSubscriberAssembliesProvider = eventSubscriberAssembliesProvider;
+			_serviceLocator = serviceLocator;
 		}
 
 		public IEnumerable<IEventSubscriber<T>> GetSubscriptions<T>()
@@ -34,7 +37,7 @@ namespace PseudoCQRS
 			}
 
 			foreach ( var subscriberType in subscribers )
-				result.Add( ServiceLocator.Current.GetInstance( subscriberType ) as IEventSubscriber<T> );
+				result.Add( _serviceLocator.GetInstance( subscriberType ) as IEventSubscriber<T> );
 
 			return result;
 		}

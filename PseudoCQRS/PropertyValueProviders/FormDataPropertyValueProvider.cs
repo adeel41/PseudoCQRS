@@ -8,10 +8,6 @@ namespace PseudoCQRS.PropertyValueProviders
 	public class FormDataPropertyValueProvider : BasePropertyValueProvider, IPropertyValueProvider
 	{
 		private readonly IHttpContextWrapper _httpContextWrapper;
-
-		public FormDataPropertyValueProvider()
-			: this( ServiceLocator.Current.GetInstance<IHttpContextWrapper>() ) {}
-
 		public FormDataPropertyValueProvider( IHttpContextWrapper httpContextWrapper )
 		{
 			_httpContextWrapper = httpContextWrapper;

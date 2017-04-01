@@ -19,21 +19,31 @@ namespace PseudoCQRS.Tests.PropertyValueProviders
 		[Test]
 		public void ShouldReturnAllPropertyValueProviders()
 		{
-			var factory = new PropertyValueProviderFactory();
+			var factory = CreateFactory();
 			Assert.AreEqual( 5, factory.GetPropertyValueProviders().Count() );
+		}
+
+		private static PropertyValueProviderFactory CreateFactory()
+		{
+			return new PropertyValueProviderFactory(
+				new CookiePropertyValueProvider( MockRepository.GenerateMock<IHttpContextWrapper>() ),
+				new SessionPropertyValueProvider( MockRepository.GenerateMock<IHttpContextWrapper>() ),
+				new RouteDataPropertyValueProvider( MockRepository.GenerateMock<IHttpContextWrapper>() ),
+				new QueryStringPropertyValueProvider( MockRepository.GenerateMock<IHttpContextWrapper>() ),
+				new FormDataPropertyValueProvider( MockRepository.GenerateMock<IHttpContextWrapper>() ) );
 		}
 
 		[Test]
 		public void GetPersistablePropertyValueProviders_PersistanceLocationIsCookie_ReturnsCookiePersistablePropertyValueProvider()
 		{
-			var factory = new PropertyValueProviderFactory();
+			var factory = CreateFactory();
 			Assert.IsInstanceOf<CookiePropertyValueProvider>( factory.GetPersistablePropertyValueProvider( PersistanceLocation.Cookie ) );
 		}
 
 		[Test]
 		public void GetPersistablePropertyValueProvider_PersistanceLocationIsSession_ReturnsSessionPropertyValueProvider()
 		{
-			var factory = new PropertyValueProviderFactory();
+			var factory = CreateFactory();
 			Assert.IsInstanceOf<SessionPropertyValueProvider>( factory.GetPersistablePropertyValueProvider( PersistanceLocation.Session ) );
 		}
 	}
