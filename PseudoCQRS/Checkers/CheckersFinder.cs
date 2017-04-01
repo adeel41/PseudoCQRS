@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
 
 namespace PseudoCQRS.Checkers
 {
 	public class CheckersFinder : ICheckersFinder
 	{
-		private readonly IServiceLocator _serviceLocator;
+		private readonly IPseudoCQRSServiceLocator _serviceLocator;
 
 		private class CheckersFinderResult<TAttribute, TChecker>
 		{
@@ -14,7 +13,7 @@ namespace PseudoCQRS.Checkers
 			public TChecker Checker { get; set; }
 		}
 
-		public CheckersFinder( IServiceLocator serviceLocator ) { _serviceLocator = serviceLocator; }
+		public CheckersFinder( IPseudoCQRSServiceLocator serviceLocator ) { _serviceLocator = serviceLocator; }
 
 		private IEnumerable<CheckersFinderResult<TAttribute, TChecker>> GetCheckersImplmenting<TAttribute, TChecker>( object instance )
 		{

@@ -68,9 +68,6 @@
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.Practices.ServiceLocation">
-      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -101,7 +98,6 @@
     <Compile Include="Checkers\PrerequisitesChecker.cs" />
     <Compile Include="CommandResult.cs" />
     <Compile Include="Configuration\DependencyInjectionContainer.cs" />
-    <Compile Include="Configuration\DependencyInjectionServiceLocator.cs" />
     <Compile Include="Configuration\DIConfiguration.cs" />
     <Compile Include="Configuration\IDependencyInjectionContainer.cs" />
     <Compile Include="Configuration\IImplementationsFinder.cs" />
@@ -124,9 +120,9 @@
     <Compile Include="IDbSessionManager.cs" />
     <Compile Include="IEventSubscriberAssembliesProvider.cs" />
     <Compile Include="IHttpContextWrapper.cs" />
+    <Compile Include="IPseudoCQRSServiceLocator.cs" />
     <Compile Include="IViewModelFactory.cs" />
     <Compile Include="IViewModelProvider.cs" />
-    <Compile Include="Controllers\Mapper.cs" />
     <Compile Include="EventPublisher.cs" />
     <Compile Include="ICommandBus.cs" />
     <Compile Include="ICommandHandler.cs" />
@@ -154,9 +150,6 @@
     <Compile Include="SubscriptionService.cs" />
     <Compile Include="ViewModelProviderArgumentsProvider.cs" />
     <Compile Include="ViewModelFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

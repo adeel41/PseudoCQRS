@@ -108,11 +108,14 @@
     <Compile Include="BaseReadController.cs" />
     <Compile Include="BaseReadExecuteController.cs" />
     <Compile Include="DBSessionManagerAttribute.cs" />
+    <Compile Include="DependencyInjectionServiceLocator.cs" />
     <Compile Include="ExtensionMethods\ControllerExtensionMethods.cs" />
     <Compile Include="HttpContextWrapper.cs" />
     <Compile Include="ImplementationsFinder.cs" />
     <Compile Include="IViewPath.cs" />
+    <Compile Include="Mapper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PseudoCQRSServiceLocator.cs" />
     <Compile Include="ViewHelpers\MessageUtilities.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
 using PseudoCQRS.ExtensionMethods;
 using PseudoCQRS.Helpers;
 
@@ -11,12 +10,12 @@ namespace PseudoCQRS
 	{
 		private readonly IObjectLookupCache _cache;
 		private readonly IEventSubscriberAssembliesProvider _eventSubscriberAssembliesProvider;
-		private readonly IServiceLocator _serviceLocator;
+		private readonly IPseudoCQRSServiceLocator _serviceLocator;
 
 		public SubscriptionService(
 			IObjectLookupCache cache,
 			IEventSubscriberAssembliesProvider eventSubscriberAssembliesProvider,
-			IServiceLocator serviceLocator )
+			IPseudoCQRSServiceLocator serviceLocator )
 		{
 			_cache = cache;
 			_eventSubscriberAssembliesProvider = eventSubscriberAssembliesProvider;

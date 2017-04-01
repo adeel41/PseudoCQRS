@@ -1,7 +1,4 @@
-﻿using System.Diagnostics.CodeAnalysis;
-using Microsoft.Practices.ServiceLocation;
-
-namespace PseudoCQRS.Controllers
+﻿namespace PseudoCQRS.Controllers
 {
 	public class ReferrerProvider : IReferrerProvider
 	{

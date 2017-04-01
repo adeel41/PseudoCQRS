@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Linq;
-using Microsoft.Practices.ServiceLocation;
 
 namespace PseudoCQRS
 {
 	public class CommandHandlerFinder : ICommandHandlerFinder
 	{
-		private readonly IServiceLocator _serviceLocator;
+		private readonly IPseudoCQRSServiceLocator _serviceLocator;
 		private readonly IAssemblyListProvider _assembliesListProvider;
 
-		public CommandHandlerFinder( IServiceLocator serviceLocator, IAssemblyListProvider assembliesListProvider )
+		public CommandHandlerFinder( IPseudoCQRSServiceLocator serviceLocator, IAssemblyListProvider assembliesListProvider )
 		{
 			_serviceLocator = serviceLocator;
 			_assembliesListProvider = assembliesListProvider;

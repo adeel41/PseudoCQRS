@@ -5,6 +5,7 @@ using System.Reflection;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 using PseudoCQRS.Helpers;
+using PseudoCQRS.Mvc;
 using Rhino.Mocks;
 
 namespace PseudoCQRS.Tests
@@ -33,7 +34,7 @@ namespace PseudoCQRS.Tests
 
 			_cache = MockRepository.GenerateMock<IObjectLookupCache>();
 
-			_service = new SubscriptionService( _cache, _eventSubscriberAssembliesProvider, _mockedServiceLocator );
+			_service = new SubscriptionService( _cache, _eventSubscriberAssembliesProvider, new PseudoCQRSServiceLocator() );
 		}
 
 		// EXPECT: Call _cache.GetValue

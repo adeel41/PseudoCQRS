@@ -1,6 +1,7 @@
 ﻿using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
 using PseudoCQRS.Checkers;
+using PseudoCQRS.Mvc;
 using Rhino.Mocks;
 
 namespace PseudoCQRS.Tests.Checkers
@@ -90,7 +91,7 @@ namespace PseudoCQRS.Tests.Checkers
 				.Return( new TestAccessChecker3() );
 
 			ServiceLocator.SetLocatorProvider( () => mockedServiceLocator );
-			_finder = new CheckersFinder( mockedServiceLocator );
+			_finder = new CheckersFinder( new PseudoCQRSServiceLocator() );
 		}
 
 		[Test]

@@ -3,9 +3,9 @@ using Microsoft.Practices.ServiceLocation;
 
 namespace PseudoCQRS.Controllers
 {
+	[Obsolete( "Use IViewModelToCommandMappingEngine directly to convert from ViewModel to Command" )]
 	public static class Mapper
 	{
-		[Obsolete]
 		public static TTo Map<TFrom, TTo>( TFrom viewModel )
 		{
 			IViewModelToCommandMappingEngine mappingEngine = null;

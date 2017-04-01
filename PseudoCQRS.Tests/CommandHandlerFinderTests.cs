@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.Practices.ServiceLocation;
 using NUnit.Framework;
+using PseudoCQRS.Mvc;
 using Rhino.Mocks;
 
 namespace PseudoCQRS.Tests
@@ -27,8 +28,9 @@ namespace PseudoCQRS.Tests
 				{
 					this.GetType().Assembly
 				} );
+			ServiceLocator.SetLocatorProvider( () => _serviceLocator );
 
-			_finder = new CommandHandlerFinder( _serviceLocator, _assembliesListProvider );
+			_finder = new CommandHandlerFinder( new PseudoCQRSServiceLocator(), _assembliesListProvider );
 		}
 
 
