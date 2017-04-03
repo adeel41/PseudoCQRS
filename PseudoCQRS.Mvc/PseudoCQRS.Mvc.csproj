@@ -119,13 +119,13 @@
     <Compile Include="ViewHelpers\MessageUtilities.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\PseudoCQRS\PseudoCQRS.csproj">
-      <Project>{7fc22cf5-db6d-4d85-a4fa-40915d4dbd3b}</Project>
-      <Name>PseudoCQRS</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\PseudoCQRS\PseudoCQRS.csproj">
+      <Project>{7ef447ac-8226-4608-9cd0-a097d96d8312}</Project>
+      <Name>PseudoCQRS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

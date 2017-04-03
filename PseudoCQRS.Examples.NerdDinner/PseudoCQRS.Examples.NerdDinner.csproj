@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,31 +75,31 @@
   <Choose>
     <When Condition="'$(Configuration)|$(Platform)' == 'Mvc5|AnyCPU'">
       <ItemGroup>
-				<Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
-				</Reference>
-				<Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<Private>True</Private>
-					<HintPath>packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
-				</Reference>
-				<Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
-				</Reference>
-				<Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
-				</Reference>
-				<Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-				</Reference>
-				<Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-					<SpecificVersion>False</SpecificVersion>
-					<HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-				</Reference>
-			</ItemGroup>
+        <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web.Mvc, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <Private>True</Private>
+          <HintPath>packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+        </Reference>
+        <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+          <SpecificVersion>False</SpecificVersion>
+          <HintPath>packages\Microsoft.AspNet.WebPages.3.0.0\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+        </Reference>
+      </ItemGroup>
     </When>
     <When Condition="'$(Configuration)|$(Platform)' == 'Mvc4|AnyCPU'">
       <ItemGroup>
@@ -280,10 +281,6 @@
     <ProjectReference Include="..\PseudoCQRS.Mvc\PseudoCQRS.Mvc.csproj">
       <Project>{02bdb9cb-e298-44b2-9c71-04ff9d9bcd60}</Project>
       <Name>PseudoCQRS.Mvc</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\PseudoCQRS\PseudoCQRS.csproj">
-      <Project>{7fc22cf5-db6d-4d85-a4fa-40915d4dbd3b}</Project>
-      <Name>PseudoCQRS</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
