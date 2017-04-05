@@ -32,10 +32,10 @@ namespace PseudoCQRS
 		{
 			var commandHandlerType = _assembliesListProvider
 				.GetAssemblies()
-				.SelectMany( x => x.GetTypes() )
-				.SingleOrDefault( x => x.GetInterfaces().Any( y => y == handlerInheritingFromType ) );
+				.SelectMany( x => x.DefinedTypes )
+				.SingleOrDefault( x => x.ImplementedInterfaces.Any( y => y == handlerInheritingFromType ) );
 
-			return commandHandlerType;
+			return commandHandlerType.AsType();
 		}
 	}
 }

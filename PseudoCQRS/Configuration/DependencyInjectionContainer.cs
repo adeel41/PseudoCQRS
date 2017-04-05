@@ -61,7 +61,7 @@ namespace PseudoCQRS.Configuration
 		private object CreateInstanceOfType( Type type )
 		{
 			var concreateType = GetConcreteType( type );
-			var constructors = concreateType.GetConstructors();
+			var constructors = concreateType.GetTypeInfo().DeclaredConstructors;
 
 			var result = new object();
 			var constructor = constructors.FirstOrDefault();
@@ -85,7 +85,7 @@ namespace PseudoCQRS.Configuration
 		{
 			const string exceptionFormat = "The type '{0}' is not registered as a dependency";
 			bool isRegistered = registrations.ContainsKey( type );
-			if ( !isRegistered && type.IsInterface )
+			if ( !isRegistered && type.GetTypeInfo().IsInterface )
 				throw new Exception( String.Format( exceptionFormat, type.FullName ) );
 
 			var result = registrations.ContainsKey( type ) ? registrations[ type ] : type;

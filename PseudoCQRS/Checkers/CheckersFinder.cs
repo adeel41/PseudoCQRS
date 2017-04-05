@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace PseudoCQRS.Checkers
 {
@@ -15,18 +17,18 @@ namespace PseudoCQRS.Checkers
 
 		public CheckersFinder( IPseudoCQRSServiceLocator serviceLocator ) { _serviceLocator = serviceLocator; }
 
-		private IEnumerable<CheckersFinderResult<TAttribute, TChecker>> GetCheckersImplmenting<TAttribute, TChecker>( object instance )
+		private IEnumerable<CheckersFinderResult<TAttribute, TChecker>> GetCheckersImplmenting<TAttribute, TChecker>( object instance ) where TAttribute : BaseCheckAttribute
 		{
 			var result = new List<CheckersFinderResult<TAttribute, TChecker>>();
 
-			foreach ( var attrib in instance.GetType().GetCustomAttributes( typeof( TAttribute ), true ) )
+			foreach ( var attrib in instance.GetType().GetTypeInfo().GetCustomAttributes<TAttribute>( true ) )
 			{
 				var checker = _serviceLocator.GetInstance( ( (BaseCheckAttribute)attrib ).CheckerType );
 				result.Add(
 					new CheckersFinderResult<TAttribute, TChecker>
 					{
 						Checker = (TChecker)checker,
-						Attribute = (TAttribute)attrib
+						Attribute =  (TAttribute)attrib
 					} );
 			}
 

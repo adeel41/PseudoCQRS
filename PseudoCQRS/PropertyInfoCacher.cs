@@ -25,7 +25,7 @@ namespace PseudoCQRS
 
 		private void FillCache( Type type )
 		{
-			_propertiesCache.Add( type, type.GetProperties().ToDictionary( x => x.Name, x => x ) );
+			_propertiesCache.Add( type, type.GetTypeInfo().DeclaredProperties.ToDictionary( x => x.Name, x => x ) );
 		}
 	}
 }

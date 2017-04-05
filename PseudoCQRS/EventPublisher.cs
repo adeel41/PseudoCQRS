@@ -1,4 +1,5 @@
 ﻿using System.Threading;
+using System.Threading.Tasks;
 
 namespace PseudoCQRS
 {
@@ -31,12 +32,12 @@ namespace PseudoCQRS
 				if ( doAsync && subscriber.IsAsynchronous )
 				{
 					var eventSubscriber = subscriber;
-					var t = new Thread( () =>
-					{
-						eventSubscriber.Notify( @event );
-						_dbSessionManager.CloseSession();
-					} );
-					t.Start();
+					Task.Factory.StartNew(
+						() =>
+						{
+							eventSubscriber.Notify( @event );
+							_dbSessionManager.CloseSession();
+						}, TaskCreationOptions.LongRunning );
 				}
 				else
 				{

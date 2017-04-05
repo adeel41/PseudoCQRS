@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using PseudoCQRS.Attributes;
 using PseudoCQRS.PropertyValueProviders;
 
@@ -39,9 +40,9 @@ namespace PseudoCQRS
 
 		internal void Persist<TArg>( TArg arguments )
 		{
-			foreach ( var property in typeof( TArg ).GetProperties().Where( x => Attribute.IsDefined( x, typeof( PersistAttribute ) ) ) )
+			foreach ( var property in typeof( TArg ).GetTypeInfo().DeclaredProperties.Where( x => x.GetCustomAttribute( typeof(PersistAttribute) ) != null ) )
 			{
-				var persistLocation = ( Attribute.GetCustomAttribute( property, typeof( PersistAttribute ) ) as PersistAttribute ).PersistanceLocation;
+				var persistLocation = property.GetCustomAttribute<PersistAttribute>().PersistanceLocation;
 				var propertyValueProvider = _propertyValueProviderFactory.GetPersistablePropertyValueProvider( persistLocation );
 				var propertyValue = property.GetValue( arguments, null );
 				if ( propertyValue != null )

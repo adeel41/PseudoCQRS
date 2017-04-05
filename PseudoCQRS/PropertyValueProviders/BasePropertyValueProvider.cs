@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 
 namespace PseudoCQRS.PropertyValueProviders
 {
@@ -7,10 +9,11 @@ namespace PseudoCQRS.PropertyValueProviders
 	{
 		public object ConvertValue( string value, Type propertyType )
 		{
+			var propertyTypeInfo = propertyType.GetTypeInfo();
 			//AM-notes: if type is IEnumerable instead of List then it will throw an error. may be we should raise an exception explaining whats the issue? or just convert this code to check for IEnumerable?
-			if ( propertyType.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof( List<> ) )
+			if ( propertyTypeInfo.IsGenericType && propertyType.GetGenericTypeDefinition() == typeof( List<> ) )
 			{
-				var containedType = propertyType.GetGenericArguments()[ 0 ];
+				var containedType = propertyTypeInfo.GenericTypeArguments.First();
 				var returnValue = (System.Collections.IList)Activator.CreateInstance( ( typeof( List<> ).MakeGenericType( containedType ) ) );
 				var valueArray = value.Split( new[]
 				{

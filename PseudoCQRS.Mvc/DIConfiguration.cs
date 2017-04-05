@@ -105,15 +105,15 @@ namespace PseudoCQRS.Configuration
 		{
 			var viewModelProviderInterfaceType = typeof( IViewModelProvider<,> );
 			var allViewModelProviderTypes = from assembly in _viewModelProvidersAssemblies
-			                                from type in assembly.GetTypes()
-			                                let viewModelProviderInterface = type.GetInterface( viewModelProviderInterfaceType.Name )
+			                                from type in assembly.DefinedTypes
+			                                let viewModelProviderInterface = type.ImplementedInterfaces.FirstOrDefault(x => x.FullName == viewModelProviderInterfaceType.FullName)
 			                                where viewModelProviderInterface != null
-			                                let genericArguments = viewModelProviderInterface.GetGenericArguments()
+			                                let genericArguments = viewModelProviderInterface.GenericTypeArguments
 			                                let interfaceGenericType = viewModelProviderInterfaceType.MakeGenericType( genericArguments )
 			                                select new
 			                                {
 				                                Interface = interfaceGenericType,
-				                                Implementation = type
+				                                Implementation = type.AsType()
 			                                };
 
 			var result = allViewModelProviderTypes.ToDictionary( x => x.Interface, x => x.Implementation );
@@ -123,7 +123,7 @@ namespace PseudoCQRS.Configuration
 		private static Dictionary<Type, Type> GetViewModelFactoriesTypesFor( Dictionary<Type, Type> viewModelProvidersTypes )
 		{
 			var viewModelFactoriesTypes = from viewModelProviderMapping in viewModelProvidersTypes
-			                              let genericArguments = viewModelProviderMapping.Key.GetGenericArguments()
+			                              let genericArguments = viewModelProviderMapping.Key.GenericTypeArguments
 			                              let interfaceType = typeof( IViewModelFactory<,> ).MakeGenericType( genericArguments )
 			                              let implementationType = typeof( ViewModelFactory<,> ).MakeGenericType( genericArguments )
 			                              select new
